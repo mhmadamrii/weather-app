@@ -14,10 +14,16 @@ import { defaultStates } from '~/lib/utils';
 type TGlobalContext = {
   geoCodedList: any;
   inputValue: any;
+  forecast: {};
+  airQuality: {};
+  fiveDayForecast: {};
+  uvIndex: {};
   handleInput: (
     e: React.ChangeEvent<HTMLInputElement>,
   ) => void;
-  setActiveCityCoords: any;
+  setActiveCityCoords: React.Dispatch<
+    React.SetStateAction<number[]>
+  >;
 };
 
 type TGlobalContextUpdate = {
@@ -25,10 +31,22 @@ type TGlobalContextUpdate = {
 };
 
 const GlobalContext = createContext<TGlobalContext>({
-  setActiveCityCoords: () => null,
+  forecast: {},
+  airQuality: {},
+  fiveDayForecast: {},
+  uvIndex: {},
+  setActiveCityCoords: () => {},
+  geoCodedList: undefined,
+  inputValue: undefined,
+  handleInput: function (
+    e: React.ChangeEvent<HTMLInputElement>,
+  ): void {
+    throw new Error('Function not implemented.');
+  },
 });
 
 const GlobalContextUpdate =
+  // @ts-ignore
   createContext<TGlobalContextUpdate>({});
 
 export const GlobalContextProvider = ({
@@ -39,9 +57,9 @@ export const GlobalContextProvider = ({
     useState(defaultStates);
   const [inputValue, setInputValue] = useState('');
 
-  const [activeCityCoords, setActiveCityCoords] = useState([
-    51.752021, -1.257726,
-  ]);
+  const [activeCityCoords, setActiveCityCoords] = useState<
+    number[]
+  >([51.752021, -1.257726]);
 
   const [airQuality, setAirQuality] = useState({});
   const [fiveDayForecast, setFiveDayForecast] = useState(
