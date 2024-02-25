@@ -1,3 +1,5 @@
+/*
+
 'use client';
 
 import React, { useEffect } from 'react';
@@ -48,6 +50,8 @@ export default function Mapbox() {
     );
   }
 
+  const test = 'lorem ipsum';
+
   return (
     <div className="flex-1 basis-[50%] rounded-lg border">
       <MapContainer
@@ -72,3 +76,5 @@ export default function Mapbox() {
     </div>
   );
 }
+
+*/
