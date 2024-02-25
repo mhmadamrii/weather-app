@@ -11,10 +11,19 @@ import React, {
 import { debounce } from 'lodash';
 import { defaultStates } from '~/lib/utils';
 
+type TForecast = {
+  main?: string;
+  timezone?: any;
+  name?: string;
+  weather?: {
+    main: string;
+  };
+};
+
 type TGlobalContext = {
   geoCodedList: any;
   inputValue: any;
-  forecast: {};
+  forecast: TForecast;
   airQuality: {};
   fiveDayForecast: {};
   uvIndex: {};
