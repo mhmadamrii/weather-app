@@ -10,7 +10,7 @@ import Navbar from '~/components/shared/navbar';
 import Population from '~/components/shared/population';
 import Pressure from '~/components/shared/pressure';
 import Sunset from '~/components/shared/sunset';
-// import Temperature from '~/components/shared/temperature';
+import Temperature from '~/components/shared/temperature';
 import UvIndex from '~/components/shared/uv-index';
 import Visibility from '~/components/shared/visibility';
 import Wind from '~/components/shared/wind';
@@ -34,11 +34,11 @@ export default function Home() {
   };
 
   return (
-    <main className="m-auto mx-[1rem] lg:mx-[2rem] xl:mx-[6rem] 2xl:mx-[16rem]">
+    <main className="mx-5">
       <Navbar />
       <div className="flex flex-col gap-4 pb-4 md:flex-row">
         <div className="flex w-full min-w-[18rem] flex-col gap-4 md:w-[35rem]">
-          {/* <Temperature /> */}
+          <Temperature />
           <FiveDayForecast />
         </div>
         <div className="flex w-full flex-col">

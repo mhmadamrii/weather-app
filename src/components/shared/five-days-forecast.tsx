@@ -7,11 +7,21 @@ import { calender } from '~/lib/icons';
 
 export default function FiveDayForecast() {
   const { fiveDayForecast } = useGlobalContext();
+  console.log('fiveDayForecast', fiveDayForecast);
 
   const { city, list } = fiveDayForecast;
 
-  if (!fiveDayForecast || !city || !list) {
-    return <Skeleton className="h-[12rem] w-full" />;
+  if (
+    !fiveDayForecast ||
+    !fiveDayForecast?.data?.city ||
+    !fiveDayForecast?.data?.list
+  ) {
+    return (
+      <>
+        <p>Loading anjinngngngn</p>
+        <Skeleton className="h-[12rem] w-full" />
+      </>
+    );
   }
 
   const processData = (
@@ -47,7 +57,10 @@ export default function FiveDayForecast() {
   const dailyForecasts = [];
 
   for (let i = 0; i < 40; i += 8) {
-    const dailyData = list.slice(i, i + 5);
+    const dailyData = fiveDayForecast?.data?.list.slice(
+      i,
+      i + 5,
+    );
     dailyForecasts.push(processData(dailyData));
   }
 
@@ -58,7 +71,8 @@ export default function FiveDayForecast() {
     >
       <div>
         <h2 className="flex items-center gap-2 font-medium">
-          {calender} 5-Day Forecast for {city.name}
+          {calender} 5-Day Forecast for{' '}
+          {fiveDayForecast?.data?.city.name}
         </h2>
 
         <div className="forecast-list pt-3">

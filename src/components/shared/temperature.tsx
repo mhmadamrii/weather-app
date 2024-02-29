@@ -1,5 +1,3 @@
-/*
-
 'use client';
 
 import React, { useState, useEffect } from 'react';
@@ -13,6 +11,7 @@ import {
   rain,
   snow,
 } from '~/lib/icons';
+
 import { useGlobalContext } from '~/context';
 import { kelvinToCelsius } from '~/lib/degree';
 
@@ -102,6 +101,3 @@ export default function Temperature() {
     </div>
   );
 }
-
-
-*/
