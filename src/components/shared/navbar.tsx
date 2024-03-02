@@ -1,7 +1,6 @@
 'use client';
 
 import { useRouter } from 'next/navigation';
-import { useGlobalContext } from '~/context';
 import { Button } from '../ui/button';
 import { github } from '~/lib/icons';
 
@@ -23,7 +22,9 @@ export default function Navbar() {
           <Button
             className="source-code-btn flex items-center gap-2"
             onClick={() => {
-              router.push('https//github.com');
+              router.push(
+                'https://github.com/mhmadamrii/weather-app',
+              );
             }}
           >
             {github} Source Code

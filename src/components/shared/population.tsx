@@ -8,8 +8,13 @@ import { formatNumber } from '~/lib/degree';
 export default function Population() {
   const { fiveDayForecast } = useGlobalContext();
   const { city } = fiveDayForecast;
+  console.log('fivee', fiveDayForecast);
 
-  if (!fiveDayForecast || !city) {
+  if (
+    !fiveDayForecast ||
+    !fiveDayForecast?.data?.city ||
+    !fiveDayForecast?.data?.list
+  ) {
     return <Skeleton className="h-[12rem] w-full" />;
   }
 
@@ -20,11 +25,14 @@ export default function Population() {
           {people} Population
         </h2>
         <p className="pt-4 text-2xl">
-          {formatNumber(city.population)}
+          {formatNumber(
+            fiveDayForecast?.data?.city.population,
+          )}
         </p>
       </div>
       <p className="text-sm">
-        Latest UN population data for {city.name}.
+        Latest UN population data for{' '}
+        {fiveDayForecast?.data?.city.name}.
       </p>
     </div>
   );

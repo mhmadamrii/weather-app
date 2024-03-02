@@ -1,7 +1,12 @@
 'use client';
 
+import moment from 'moment';
 import { useGlobalContext } from '~/context';
-import { Carousel, CarouselContent } from '../ui/carousel';
+import {
+  Carousel,
+  CarouselContent,
+  CarouselItem,
+} from '../ui/carousel';
 import { Skeleton } from '../ui/skeleton';
 import {
   clearSky,
@@ -10,14 +15,21 @@ import {
   rain,
   snow,
 } from '~/lib/icons';
+import { kelvinToCelsius } from '~/lib/degree';
 
 export default function DailyForecast() {
   const { forecast, fiveDayForecast } = useGlobalContext();
+  // console.log('forecast', forecast);
+  // console.log('fivedaily', fiveDayForecast);
 
   const { weather } = forecast;
   const { city, list } = fiveDayForecast;
 
-  if (!fiveDayForecast || !city || !list) {
+  if (
+    !fiveDayForecast ||
+    !fiveDayForecast?.data?.city ||
+    !fiveDayForecast?.data?.list
+  ) {
     return <Skeleton className="h-[12rem] w-full" />;
   }
 
@@ -29,7 +41,7 @@ export default function DailyForecast() {
   const todayString = today.toISOString().split('T')[0];
 
   //filter the list for today's forecast
-  const todaysForecast = list.filter(
+  const todaysForecast = fiveDayForecast?.data?.list.filter(
     (forecast: {
       dt_txt: string;
       main: { temp: number };

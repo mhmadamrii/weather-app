@@ -7,7 +7,6 @@ import { calender } from '~/lib/icons';
 
 export default function FiveDayForecast() {
   const { fiveDayForecast } = useGlobalContext();
-  console.log('fiveDayForecast', fiveDayForecast);
 
   const { city, list } = fiveDayForecast;
 
@@ -16,12 +15,7 @@ export default function FiveDayForecast() {
     !fiveDayForecast?.data?.city ||
     !fiveDayForecast?.data?.list
   ) {
-    return (
-      <>
-        <p>Loading anjinngngngn</p>
-        <Skeleton className="h-[12rem] w-full" />
-      </>
-    );
+    return <Skeleton className="h-[12rem] w-full" />;
   }
 
   const processData = (
