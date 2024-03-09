@@ -62,12 +62,12 @@ export const GlobalContextProvider = ({ children }) => {
 
   // five day forecast
   const fetchFiveDayForecast = async (lat, lon) => {
+    console.log('lat', lat);
+    console.log('lon', lon);
     try {
       const res = await axios.get(
         `api/testing?lat=${lat}&lon=${lon}`,
       );
-
-      console.log('res', res);
 
       setFiveDayForecast(res.data);
     } catch (error) {

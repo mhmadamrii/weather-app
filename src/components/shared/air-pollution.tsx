@@ -31,7 +31,7 @@ export default function AirPollution() {
   return (
     <div className="air-pollution dark:bg-dark-grey sm-2:col-span-2 col-span-full flex h-[12rem] flex-col gap-8 rounded-lg border px-4 pt-6 shadow-sm dark:shadow-none md:col-span-2 xl:col-span-2">
       <h2 className="flex items-center gap-2 font-medium">
-        {thermo}Air Pollusion
+        {thermo}Air Pollution
       </h2>
       <Progress
         value={airQualityIndex}

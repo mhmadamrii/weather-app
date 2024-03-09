@@ -8,7 +8,6 @@ import { formatNumber } from '~/lib/degree';
 export default function Population() {
   const { fiveDayForecast } = useGlobalContext();
   const { city } = fiveDayForecast;
-  console.log('fivee', fiveDayForecast);
 
   if (
     !fiveDayForecast ||

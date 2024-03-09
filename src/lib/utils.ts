@@ -7,11 +7,11 @@ export function cn(...inputs: ClassValue[]) {
 
 export const defaultStates = [
   {
-    name: 'Madrid',
-    country: 'ES',
-    state: 'Madrid',
-    lat: 40.4165,
-    lon: -3.7026,
+    name: 'Bogor',
+    country: 'ID',
+    state: 'Bogor',
+    lat: -6.96256425,
+    lon: 112.0276531475989,
   },
   {
     name: 'London',

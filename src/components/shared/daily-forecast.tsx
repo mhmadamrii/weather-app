@@ -46,17 +46,19 @@ export default function DailyForecast() {
       dt_txt: string;
       main: { temp: number };
     }) => {
+      // console.log('forecast dt txt', forecast.dt_txt);
+      // console.log('today string', todayString);
       return forecast.dt_txt.startsWith(todayString);
     },
   );
 
   const { main: weatherMain } = weather[0];
 
-  if (todaysForecast.length < 1) {
-    return (
-      <Skeleton className="sm-2:col-span-2 col-span-full h-[12rem] w-full md:col-span-2 xl:col-span-2" />
-    );
-  }
+  // if (todaysForecast.length < 1) {
+  //   return (
+  //     <Skeleton className="sm-2:col-span-2 col-span-full h-[12rem] w-full md:col-span-2 xl:col-span-2" />
+  //   );
+  // }
 
   const getIcon = () => {
     switch (weatherMain) {

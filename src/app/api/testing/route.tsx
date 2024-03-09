@@ -1,12 +1,15 @@
 import { NextRequest, NextResponse } from 'next/server';
 
 export async function GET(req: NextRequest) {
+  const lat = req.nextUrl.searchParams.get('lat');
+  const lon = req.nextUrl.searchParams.get('lon');
+  const API_KEY = process.env.OPENWEATHERMAP_API_KEY;
+
   try {
     const res = await fetch(
-      'https://api.openweathermap.org/data/2.5/forecast?lat=51.752021&lon=-1.257726&appid=6333923a9a17420b59e8008b5fcc6dcf',
+      `https://api.openweathermap.org/data/2.5/forecast?lat=${lat}&lon=${lon}&appid=${API_KEY}`,
     );
     const data = await res.json();
-    console.log('dataa', data);
     return NextResponse.json({ data: data });
   } catch (error) {
     return new Response('error  has been occured', {
